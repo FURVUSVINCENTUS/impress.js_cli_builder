@@ -25,5 +25,5 @@ Descr.	: $description
 EOF
 cat $pdir/$filename/index.html >> $pdir/$filename/$filename.html
 mv $pdir/$filename/index.html $pdir/$filname/example.html
-chown alpha:alpha $path/$pdir/$filename/$filename.html
-chmod u+rw $path/$pdir/$filename/$filename.html
+chown alpha:alpha $pdir/$filename/$filename.html
+chmod u+rw $pdir/$filename/$filename.html
