@@ -3,37 +3,27 @@
 path=$(pwd)
 date=`date '+%F_%H:%M:%S'`
 # filename="USER INPUT"
-read -p "Enter presentation name: " filename
-mkdir $path/$filename
-touch $path/$filename/$filename.html
-# Affichage carte des feuilles de style:
-ls $path/css
-read -p "Choose your stylesheet: " stylesheet
+tree -dli -I "css|example|extras|js|src" -L 1
+read -p "Choose your project directory : " pdir
+ls $path/examples
+read -p "Choose type of presentation : " template
+read -p "Enter presentation name : " filename
+cp -r $path/examples/$template/ .
+mv $template $pdir/$filename
 read -p "Insert short description: " description
 
-cat <<EOF > $path/$filename/$filename.html
+cat <<EOF > $path/$pdir/$filename/$filename.html
 <!--
 FileName: $filename.html
 Author  : Vicente Crestani
 @edu    : vicente.crestani@edu.vs.ch
 @pro    : vicente.crestani.eclat@fvaj.ch
+template: $template
 Date    : $date
 Descr.	: $description
 -->
-<!DOCTYPE html>
-<html lang="en">
-<head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>$filename</title>
-	<link rel="stylesheet" href="../css/$stylesheet.css">
-	<link rel="stylesheet" href="#">
-	<link rel="stylesheet" href="#">
-</head>
-<body>
-        
-</body>
-</html>
 EOF
-chown alpha:alpha $path/$filename/$filename.html
-chmod u+rw $path/$filename/$filename.html
+cat $pdir/$filename/index.html >> $pdir/$filename/$filename.html
+mv $pdir/$filename/index.html $pdir/$filname/example.html
+chown alpha:alpha $path/$pdir/$filename/$filename.html
+chmod u+rw $path/$pdir/$filename/$filename.html
