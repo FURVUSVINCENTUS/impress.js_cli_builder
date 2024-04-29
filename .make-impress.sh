@@ -8,8 +8,8 @@ read -p "Choose your project directory : " pdir
 ls $path/examples
 read -p "Choose type of presentation : " template
 read -p "Enter presentation name : " filename
-cp -r $path/examples/$template/ .
-mv $template $pdir/$filename
+cp -r $path/examples/$template/ $path
+mv $path/$template $path/$pdir/$filename/
 read -p "Insert short description: " description
 
 cat <<EOF > $path/$pdir/$filename/$filename.html
@@ -23,7 +23,7 @@ Date    : $date
 Descr.	: $description
 -->
 EOF
-cat $pdir/$filename/index.html >> $pdir/$filename/$filename.html
-mv $pdir/$filename/index.html $pdir/$filname/example.html
-chown alpha:alpha $pdir/$filename/$filename.html
-chmod u+rw $pdir/$filename/$filename.html
+cat $path/$pdir/$filename/index.html >> $path/$pdir/$filename/$filename.html
+mv $path/$pdir/$filename/index.html $path/$pdir/$filname/example.html
+chown alpha:alpha $path/$pdir/$filename/$filename.html
+chmod u+rw $path/$pdir/$filename/$filename.html
