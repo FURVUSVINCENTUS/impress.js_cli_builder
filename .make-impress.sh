@@ -1,9 +1,9 @@
 #!/bin/bash
 
-path=$(pwd)
+path="$(dirname -- "$(readlink -f "$BASH_SOURCE")")"
 date=`date '+%F_%H:%M:%S'`
 # filename="USER INPUT"
-tree -dli -I "css|example|extras|js|src" -L 1
+tree -dli -I "css|example|extras|js|src" -L 1 $path
 read -p "Choose your project directory : " pdir
 ls $path/examples
 read -p "Choose type of presentation : " template
